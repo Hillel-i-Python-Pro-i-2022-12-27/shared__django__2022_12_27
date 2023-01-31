@@ -1,0 +1,18 @@
+# For name generation.
+faker==16.6.1
+
+# [code_style]-[BEGIN]
+# Pre-commit hook.
+pre-commit==3.0.2
+# Upgrade syntax.
+pyupgrade==3.3.1
+# Formatter. Apply codestyle.
+black==22.12.0
+# Check codestyle.
+flake8==6.0.0
+# Removes unused imports and unused variables.
+autoflake==2.0.1
+# [code_style]-[END]
+
+# Core.
+django==4.1.5

@@ -1,0 +1,11 @@
+version: '3.8'
+
+
+services:
+  app:
+    build: .
+    volumes:
+      - ./db:/wd/db:rw
+    ports:
+      - "8000:8000"
+    user: "1000"
