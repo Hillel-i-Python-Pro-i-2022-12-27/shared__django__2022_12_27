@@ -1,6 +1,7 @@
 .PHONY: d-homework-i-run
 # Make all actions needed for run homework from zero.
 d-homework-i-run:
+	@make init-config-i-homework && \
 	make d-run
 
 .PHONY: d-homework-i-purge
@@ -34,6 +35,11 @@ init-dev:
 	@pip install --upgrade pip && \
 	pip install --requirement requirements.txt && \
 	pre-commit install
+
+.PHONY: init-config-i-homework
+# Init configs for homework
+init-config-i-homework:
+	@cp docker-compose.override.homework.yml docker-compose.override.yml
 
 .PHONY: homework-i-run
 # Run homework.
