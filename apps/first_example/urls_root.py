@@ -1,6 +1,6 @@
 from django.urls import path
 
-from apps.first_example import views
+from . import views
 
 # from apps.first_example.views.index import index
 

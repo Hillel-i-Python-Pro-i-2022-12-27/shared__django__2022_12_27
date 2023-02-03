@@ -1,0 +1,33 @@
+{% extends '_helpers/_base.html' %}
+
+{% block content %}
+    <a href="{% url 'animals:create' %}">
+        <button>
+            Create
+        </button>
+    </a>
+
+    <ul>
+        {% for animal in object_list %}
+            <li>
+                <span>{{ animal.name }}</span>
+                <span> - </span>
+                <span>{{ animal.age }}</span>
+                <span> - </span>
+                <span>{{ animal.modified_at }}</span>
+
+                <a href="{% url 'animals:update' pk=animal.id %}">
+                    <button>
+                        Edit
+                    </button>
+                </a>
+
+                <a href="{% url 'animals:delete' pk=animal.id %}">
+                    <button>
+                        Delete
+                    </button>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

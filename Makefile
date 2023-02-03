@@ -60,3 +60,20 @@ pre-commit-run:
 # Run tools for all files.
 pre-commit-run-all:
 	@pre-commit run --all-files
+
+
+.PHONY: migrations
+# Make migrations
+migrations:
+	@python manage.py makemigrations
+
+.PHONY: migrate
+# Migrate
+migrate:
+	@python manage.py migrate
+
+
+.PHONY: django-i-generate-animals-i-100
+# Generate 100 animals.
+django-i-generate-animals-i-100:
+	@python manage.py generate_animals --amount 100
