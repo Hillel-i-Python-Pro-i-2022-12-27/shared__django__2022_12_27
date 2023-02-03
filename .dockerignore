@@ -6,3 +6,4 @@
 !apps/
 !manage.py
 !requirements.txt
+!Makefile
