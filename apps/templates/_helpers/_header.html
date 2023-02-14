@@ -1,22 +1,25 @@
 <header>
-    <ul>
-        <li>
-            <a href="{% url 'root:index' %}">Home</a>
-        </li>
-        <li>
-            <a href="{% url 'first_example:index' %}">Greetings</a>
-        </li>
-        <li>
-            <a href="{% url 'first_example:hello_with_args' name='Mary' age=52 %}">Greetings with args</a>
-        </li>
-        <li>
-            <a href="{% url 'first_example:humans' %}">Humans</a>
-        </li>
-        <li>
-            <a href="{% url 'animals:list_by_function' %}">Animals by list</a>
-        </li>
-        <li>
-            <a href="{% url 'animals:list_by_class' %}">Animals by class</a>
-        </li>
-    </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'root:index' %}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'first_example:index' %}">Greetings</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'first_example:hello_with_args' name='Mary' age=52 %}">Greetings with
+                    args</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'first_example:humans' %}">Humans</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'animals:list_by_function' %}">Animals by list</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'animals:list_by_class' %}">Animals by class</a>
+            </li>
+        </ul>
+    </nav>
 </header>

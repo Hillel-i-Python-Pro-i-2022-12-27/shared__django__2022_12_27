@@ -1,0 +1,41 @@
+.my-elements-box {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    align-items: center;
+
+    /*width: max-content;*/
+}
+
+.my-element-style {
+    display: flex;
+    flex-flow: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    width: fit-content;
+
+    border-radius: 5px;
+    border: 1px solid blue;
+
+    margin: .5em;
+    padding: .2em;
+
+    background-color: #eaeaea;
+    text-shadow: 1px 1px 2px white;
+    box-shadow: 0.1em 0.1em 0.5em rgb(0 0 255 / 50%);
+}
+
+.my-element-style:hover {
+    box-shadow: 0.1em 0.1em 0.1em rgb(0 0 255 / 50%);
+}
+
+.my-element-style .my-avatar,
+.my-element-style .my-avatar > img {
+    width: 2em;
+    height: 2em;
+}
+
