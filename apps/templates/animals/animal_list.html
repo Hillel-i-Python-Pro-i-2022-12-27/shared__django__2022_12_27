@@ -2,31 +2,51 @@
 
 {% block content %}
     <a href="{% url 'animals:create' %}">
-        <button>
+        <button class="btn btn-success">
             Create
         </button>
     </a>
 
     <ul>
         {% for animal in object_list %}
-            <li>
-                <span>{{ animal.name }}</span>
-                <span> - </span>
-                <span>{{ animal.age }}</span>
-                <span> - </span>
-                <span>{{ animal.modified_at }}</span>
+            <li class="row my-elements-box">
+                <div class="col my-element-style">
+                    <div class="my-avatar">
+                        {% if animal.avatar %}
+                            <img src="{{ animal.avatar.url }}" alt="Avatar">
+                        {% endif %}
+                    </div>
 
-                <a href="{% url 'animals:update' pk=animal.id %}">
-                    <button>
-                        Edit
-                    </button>
-                </a>
+                    <div class="my-element-content">
+                        <span>{{ animal.name }}</span>
+                        <span> - </span>
+                        <span>{{ animal.age }}</span>
+                        <span> - </span>
 
-                <a href="{% url 'animals:delete' pk=animal.id %}">
-                    <button>
-                        Delete
-                    </button>
-                </a>
+                        {% if animal.kind is not None %}
+                            <span>{{ animal.kind }}</span>
+                        {% else %}
+                            <span>Unknown</span>
+                        {% endif %}
+
+                        <span> - </span>
+                        <span>{{ animal.modified_at }}</span>
+                    </div>
+
+                    <div class="my-element-controls">
+                        <a href="{% url 'animals:update' pk=animal.id %}">
+                            <button class="btn btn-primary">
+                                Edit
+                            </button>
+                        </a>
+
+                        <a href="{% url 'animals:delete' pk=animal.id %}">
+                            <button class="btn btn-danger">
+                                Delete
+                            </button>
+                        </a>
+                    </div>
+                </div>
             </li>
         {% endfor %}
     </ul>

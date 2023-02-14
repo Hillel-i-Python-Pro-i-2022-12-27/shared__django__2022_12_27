@@ -25,6 +25,8 @@ class AnimalCreateView(CreateView):
     fields = (
         "name",
         "age",
+        "kind",
+        "avatar",
         "is_auto_generated",
     )
     success_url = reverse_lazy("animals:list_by_class")
@@ -36,6 +38,8 @@ class AnimalUpdateView(UpdateView):
         "id",
         "name",
         "age",
+        "kind",
+        "avatar",
         "is_auto_generated",
     )
     success_url = reverse_lazy("animals:list_by_class")

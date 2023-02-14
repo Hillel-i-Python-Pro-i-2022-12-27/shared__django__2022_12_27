@@ -1,11 +1,15 @@
 version: '3.8'
 
+volumes:
+  db:
+  media:
 
 services:
   app:
     build: .
     volumes:
       - ./db:/wd/db:rw
+      - ./media:/wd/media:rw
     ports:
       - "8000:8000"
     user: "1000"

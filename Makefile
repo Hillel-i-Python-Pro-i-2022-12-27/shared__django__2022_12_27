@@ -73,6 +73,12 @@ migrate:
 	@python manage.py migrate
 
 
+.PHONY: init-dev-i-create-superuser
+# Create superuser
+init-dev-i-create-superuser:
+	@DJANGO_SUPERUSER_PASSWORD=admin123 python manage.py createsuperuser --user admin --email admin@gmail.com --no-input
+
+
 .PHONY: django-i-generate-animals-i-100
 # Generate 100 animals.
 django-i-generate-animals-i-100:
