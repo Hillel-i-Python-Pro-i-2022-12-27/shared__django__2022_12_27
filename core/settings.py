@@ -10,10 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import string
 from pathlib import Path
 
 # noinspection PyUnresolvedReferences
 import environ
+from django.utils.crypto import get_random_string
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,10 @@ env.read_env(BASE_DIR.joinpath(".env"))
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env.str("DJANGO__SECRET_KEY")
+SECRET_KEY = env.str(
+    "DJANGO__SECRET_KEY",
+    get_random_string(64, "".join([string.ascii_letters, string.digits, string.punctuation])),
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DJANGO__DEBUG", False)
