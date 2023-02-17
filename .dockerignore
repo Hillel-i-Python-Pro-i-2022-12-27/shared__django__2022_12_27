@@ -7,3 +7,4 @@
 !manage.py
 !requirements.txt
 !Makefile
+!docker/app/
