@@ -22,3 +22,9 @@ Pillow==9.4.0
 
 # For forms
 crispy-bootstrap5==0.7
+
+# For environment variables and configuration.
+django-environ==0.9.0
+
+# For PostgreSQL.
+psycopg2-binary==2.9.5

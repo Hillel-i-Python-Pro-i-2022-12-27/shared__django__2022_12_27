@@ -1,16 +1,27 @@
 version: '3.8'
 
 volumes:
-  db:
-  media:
+  postgres_data: { }
 
 services:
   app:
     build: .
+    depends_on:
+      - postgres
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+    profiles:
+      - full_dev
+
+  postgres:
+    image: postgres:15.2
     volumes:
-      - ./db:/wd/db:rw
-      - ./media:/wd/media:rw
-    ports:
-      - "8000:8000"
-    user: "1000"
-    command: bash -c "make migrate && python manage.py runserver 0.0.0.0:8000"
+      - postgres_data:/var/lib/postgresql/data:rw
+    env_file:
+      - .env
+    profiles:
+      - full_dev
+      - local_dev
