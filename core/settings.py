@@ -62,6 +62,8 @@ LOCAL_APPS = [
     "apps.first_example",
     "apps.animals",
     "apps.users",
+    "apps.sessions_example",
+    "apps.middleware_example",
 ]
 
 THIRD_PARTY_APPS = [
@@ -80,6 +82,15 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+USE_EXTRA_MIDDLEWARES = env.bool("CUSTOM__USE_EXTRA_MIDDLEWARES", False)
+if USE_EXTRA_MIDDLEWARES:
+    MIDDLEWARE.extend(
+        [
+            "apps.middleware_example.middleware.SimpleMiddleware",
+            "apps.middleware_example.middleware.SimpleMiddleware2",
+        ]
+    )
 
 ROOT_URLCONF = "core.urls"
 
