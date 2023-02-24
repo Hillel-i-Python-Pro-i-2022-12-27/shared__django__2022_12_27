@@ -1,4 +1,8 @@
-<header>
+<header class="header-box">
+    <div>
+        Logo
+    </div>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -28,4 +32,17 @@
             </li>
         </ul>
     </nav>
+
+    <div class="user-box">
+        {% if user.is_authenticated %}
+            <div class="user-info">
+                <p>{{ user.username }}</p>
+            </div>
+
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+
+        {% endif %}
+    </div>
 </header>

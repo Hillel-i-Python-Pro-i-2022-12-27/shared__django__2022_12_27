@@ -95,3 +95,7 @@ init-dev-i-create-superuser:
 # Generate 100 animals.
 django-i-generate-animals-i-100:
 	@python manage.py generate_animals --amount 100
+
+.PHONY: util-i-kill-by-port
+util-i-kill-by-port:
+	@sudo lsof -i:8000 -Fp | head -n 1 | sed 's/^p//' | xargs sudo kill

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.urls import path, include
 
 from . import views
@@ -14,7 +15,7 @@ urlpatterns = [
             ]
         ),
     ),
-    path("create/", views.AnimalCreateView.as_view(), name="create"),
+    path("create/", login_required(views.AnimalCreateView.as_view()), name="create"),
     path("update/<int:pk>/", views.AnimalUpdateView.as_view(), name="update"),
     path("delete/<int:pk>/", views.AnimalDeleteView.as_view(), name="delete"),
 ]
