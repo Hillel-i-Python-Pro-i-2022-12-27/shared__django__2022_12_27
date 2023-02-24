@@ -19,10 +19,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path("accounts/", include("django.contrib.auth.urls")),
     path("admin/", admin.site.urls),
     path("first-example/", include("apps.first_example.urls")),
     path("animals/", include("apps.animals.urls")),
     path("sessions-example/", include("apps.sessions_example.urls")),
+    path("users/", include("apps.users.urls")),
     path("", include("apps.first_example.urls_root")),
 ]
 

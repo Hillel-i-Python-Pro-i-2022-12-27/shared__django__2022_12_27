@@ -15,7 +15,10 @@ class Kind(models.Model):
 
 class Animal(models.Model):
     name = models.CharField(max_length=100)
-    age = models.PositiveSmallIntegerField()
+    age = models.PositiveSmallIntegerField(
+        blank=True,
+        default=0,
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
@@ -35,7 +38,7 @@ class Animal(models.Model):
         related_name="animals",
         default=None,
         null=True,
-        blank=False,
+        blank=True,
     )
 
     # state = models.CharField(
