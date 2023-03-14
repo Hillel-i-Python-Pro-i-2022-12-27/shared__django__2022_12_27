@@ -1,0 +1,36 @@
+{% extends '_helpers/_base.html' %}
+
+{% block content %}
+    <a href="{% url 'animals:go_to_my_animals' %}">
+        <button class="btn btn-success">
+            Go to my animals
+        </button>
+    </a>
+
+    <ul>
+        {% for owner_data in object_list %}
+            <li class="row my-elements-box">
+                <div class="col my-element-style">
+                    <div class="my-element-content">
+                        <span>
+                        {{ owner_data.name }}
+                        </span>
+                        <span> - </span>
+                        <span>
+                        {{ owner_data.count_animals }} animals
+                        </span>
+                    </div>
+
+
+                    <div class="my-element-controls">
+                        <a href="{% url 'animals:animals_list_by_owner' pk=owner_data.id %}">
+                            <button class="btn btn-primary">
+                                Go to animals
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

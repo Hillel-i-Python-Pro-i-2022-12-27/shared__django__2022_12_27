@@ -1,0 +1,13 @@
+{% extends "_helpers/_base.html" %}
+{% block title %} Sign up{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h3> Sign up</h3>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Sign up</button>
+    </form>
+{% endblock %}

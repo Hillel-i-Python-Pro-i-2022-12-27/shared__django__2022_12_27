@@ -60,3 +60,6 @@
     align-items: center;
 }
 
+.element-centered {
+    margin: auto;
+}
