@@ -3,18 +3,23 @@ version: '3.8'
 volumes:
   postgres_data: { }
 
+x-app-as-service: &app_as_service
+  build: .
+  environment:
+    - POSTGRES_HOST=postgres
+    - POSTGRES_PORT=5432
+    - CELERY_BROKER_URL=amqp://guest:guest@rabbitmq:5672/
+  env_file:
+    - .env
+  depends_on:
+    - postgres
+  profiles:
+    - full_dev
+
 services:
   app:
-    build: .
-    depends_on:
-      - postgres
-    env_file:
-      - .env
-    environment:
-      - POSTGRES_HOST=postgres
-      - POSTGRES_PORT=5432
-    profiles:
-      - full_dev
+    <<: *app_as_service
+    command: /start.sh
 
   postgres:
     image: postgres:15.2
@@ -25,3 +30,17 @@ services:
     profiles:
       - full_dev
       - local_dev
+
+  rabbitmq:
+    image: rabbitmq:3.11.4-management-alpine
+    profiles:
+      - full_dev
+      - local_dev
+
+  celery-worker:
+    <<: *app_as_service
+    command: /celery_worker_start.sh
+
+  celery-beat:
+    <<: *app_as_service
+    command: /celery_beat_start.sh

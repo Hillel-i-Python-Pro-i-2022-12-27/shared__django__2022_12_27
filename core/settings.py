@@ -15,11 +15,9 @@ from pathlib import Path
 
 # noinspection PyUnresolvedReferences
 import environ
+from celery.schedules import crontab
 from django.utils.crypto import get_random_string
 
-import datetime
-
-datetime.MAXYEAR
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 APPS_DIR = BASE_DIR.joinpath("apps")
@@ -67,11 +65,13 @@ LOCAL_APPS = [
     "apps.users",
     "apps.sessions_example",
     "apps.middleware_example",
+    "apps.celery_example",
 ]
 
 THIRD_PARTY_APPS = [
     "crispy_forms",
     "crispy_bootstrap5",
+    "django_celery_beat",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -184,3 +184,13 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "root:index"
 LOGOUT_REDIRECT_URL = "root:index"
+
+CELERY_BROKER_URL = env.str("CELERY_BROKER_URL")
+
+CELERY_BEAT_SCHEDULE = {
+    "test_task": {
+        "task": "apps.celery_example.tasks.example_2.example_2",
+        "schedule": crontab(minute="*/1"),  # every minute
+        # 'schedule': crontab(hour='*/21'),  # every minute
+    },
+}
